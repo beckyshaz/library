@@ -1,0 +1,1 @@
+This is a project on library of books, creating a book using an object constructor then storing them in a library in a form of an array and then displaying them to users with basic info about the book.
