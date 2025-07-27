@@ -1,3 +1,30 @@
 body {
     color: red;
 }
+
+.container {
+    display: flex;
+    /*grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));*/
+    /*justify-items: center;*/
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid red;
+}
+
+.container div {
+    border: 2px solid greenyellow;
+    height: 300px;
+    width: 300px;
+
+}
+
+/*.book {
+    display: flex;
+    background-color: green;
+}
+*/
+.book * {
+    background-color: yellow;
+}
