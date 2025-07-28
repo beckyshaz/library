@@ -10,6 +10,24 @@
     <body>
         hello world
         <div class="container"></div>
+        <button class="form-input-button">Add New Book</button>
+        <dialog>
+            <form action="" method="post">
+                <p><label for="book-title">Book Title</label></p>
+                <input class="title-input" type="text" id="book-title" name="title" required placeholder="Becky Meets Becks">
+                <p><label for="author">Author</label></p>
+                <input class="author-input" type="text" id="author" name="author" required placeholder="Becky Becks">
+                <p><label for="pages">Number of Pages</label></p>
+                <input class="pages-input" type="number" id="pages" name="pages" required placeholder="120">
+                <p><label for="read"></label></p>
+                <select name="read" id="read">
+                    <option value="read">read</option>
+                    <option value="not-read">Not read</option>
+                </select>
+                <button type="submit" class="add-book">Add</button>
+                <button formmethod="dialog" formnovalidate>cancel</button>
+            </form>
+        </dialog>
         
     </body>
 </html>

@@ -16,15 +16,10 @@ function addBookToLibrary(book) {
         author: book.author,
         title: book.title,
         pages: book.pages
-        
-
+    
     }); 
 }
 
-let book = new Book("Sharon", "alice in wonderland", 120);
-//book.save();
-
-console.log(book);
 
 book1 = new Book("Toby", "Awesome", 150);
 
@@ -36,16 +31,19 @@ book4 = new Book("Tobias", "Handsomelly Prosperous", 300);
 
 book5 = new Book("Family", "Blessed Happpy Family", 500);
 
+
 addBookToLibrary(book1);
-addBookToLibrary(book);
 addBookToLibrary(book2);
 addBookToLibrary(book3);
 addBookToLibrary(book4);
 addBookToLibrary(book5);
+
+
 console.log(myLibrary.length);
 const container = document.querySelector(".container");
 
 function displayBook () {
+    container.innerHTML = "";
     for (let i = 0; i < myLibrary.length; i++) {
         console.log(myLibrary[i]);
         const div = document.createElement("div");
@@ -63,3 +61,31 @@ function displayBook () {
 
 
 displayBook();
+
+const newBook = document.querySelector(".form-input-button");
+const dialog = document.querySelector("dialog");
+const addBook = document.querySelector(".add-book");
+
+newBook.addEventListener("click", () => {
+    dialog.showModal();
+}) 
+
+addBook.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const bookTitle = document.querySelector(".title-input");
+    const bookAuthor = document.querySelector(".author-input");
+    const bookPages = document.querySelector(".pages-input");
+
+    let book = new Book(bookAuthor.value, bookTitle.value, bookPages.value);
+
+    addBookToLibrary(book);
+    console.log(myLibrary);
+    dialog.close();
+    displayBook();
+    console.log(myLibrary.length);
+    bookAuthor.value = "";
+    bookPages.value = "";
+    bookTitle.value = "";
+})
+
