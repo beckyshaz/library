@@ -70,7 +70,7 @@ h1 {
 .container div {
     height: 250px;
     width: 300px;
-    border-radius: 10px;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -78,6 +78,7 @@ h1 {
     gap: 10px;
     background-color: pink;
     box-shadow: 1px 4px 8px;
+    border-left: 20px solid black;
 }
 
 .container div:hover {
