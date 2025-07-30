@@ -10,18 +10,24 @@ function Book(author, title, pages, read) {
 
 }
 
+
 function addBookToLibrary(book) {
     
-    myLibrary.push({ 
-        id: book.id,
-        author: book.author,
-        title: book.title,
-        pages: book.pages,
-        read: book.read
-    
-    }); 
+    myLibrary.push(book); 
 }
 
+
+Book.prototype.changeBookStatus = function() {
+
+    
+    if (this.read === "read") {
+        this.read = "not read"
+    }
+    else {
+        this.read = "read";
+    }
+    
+}
 
 book1 = new Book("Toby", "Awesome", 150, "read");
 
@@ -44,16 +50,22 @@ addBookToLibrary(book5);
 console.log(myLibrary.length);
 const container = document.querySelector(".container");
 
+
+book4.changeBookStatus();
+console.log(book4);
+book5.changeBookStatus();
+console.log(book5);
+
 function displayBook () {
     container.innerHTML = "";
     for (let i = 0; i < myLibrary.length; i++) {
         console.log(myLibrary[i]);
         const div = document.createElement("div");
         div.innerHTML = `
-        <p class="title">Title: ${myLibrary[i].title}</p>
-        <p class="author">Author: ${myLibrary[i].author}</p>
-        <p class="pages">Pages: ${myLibrary[i].pages}</p>
-        <p class="read">Read: ${myLibrary[i].read}</p>
+        <p class="title"> ${myLibrary[i].title}</p>
+        <p class="author">By ${myLibrary[i].author}</p>
+        <p class="pages">${myLibrary[i].pages} pages </p>
+        <p class="read">${myLibrary[i].read}</p>
         `
         div.classList = "book";
         const deleteButton = document.createElement("button");
@@ -72,7 +84,38 @@ function displayBook () {
                 displayBook();
                 console.log(myLibrary);
             }
+
         });
+        const changeStatus = document.createElement("button");
+        if (myLibrary[i].read === "read") {
+            changeStatus.textContent = "not read";
+           }else {
+            changeStatus.textContent = "read";
+           }
+       
+        changeStatus.classList = "change-book-status";
+        changeStatus.setAttribute("data-id", myLibrary[i].id);
+        
+        changeStatus.addEventListener("click", () => {
+           
+           const readStatusId = changeStatus.dataset.id;
+           const bookIndex = myLibrary.findIndex((myBook) => myBook.id === readStatusId);
+           const bookObject = myLibrary[bookIndex];
+           //changeStatus.textContent = bookObject.read;
+           
+           console.log(bookObject.read);
+           bookObject.changeBookStatus();
+          
+
+           //changeStatus.textContent = myLibrary[i].read;
+           //const currentReadStatus = bookObject.read;
+           //changeStatus.textContent = currentReadStatus;
+           console.log(bookObject.read);
+           displayBook();
+        } )
+        
+        
+        div.appendChild(changeStatus);
         div.appendChild(deleteButton);
         container.appendChild(div);
         
