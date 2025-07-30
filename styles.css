@@ -1,30 +1,160 @@
+@font-face {
+    font-family:  "Jember Sketch";
+    src: url("./fonts/Jember Sketch.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Norse Bold";
+    src: url("fonts/Norse-Bold.otf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Roboto-Light";
+    src: url("fonts/Roboto-Light.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "Roboto-Medium";
+    src: url("fonts/Roboto-Medium.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+
+* {
+    margin: 0;;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     color: red;
+    font-family: "Roboto-Medium";
+    text-align: center;
+    background-color: rosybrown;
+    
+}
+
+h1 {
+    color: black;
+    font-family: "Jember Sketch", system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
+    letter-spacing: 5px;
+    padding: 10px;
+    font-size: 2.5rem;
+}
+
+.add-new-book {
+    margin-top: 20px;
+    padding: 6px;
+    background-color: rgb(13, 13, 190);
+    color: whitesmoke;
+    border-radius: 15px;
+    width: 150px;
 }
 
 .container {
     display: flex;
-    /*grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));*/
-    /*justify-items: center;*/
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    border: 2px solid red;
+    margin-top: 30px;
 }
 
 .container div {
-    border: 2px solid greenyellow;
-    height: 300px;
+    height: 250px;
     width: 300px;
-
-}
-
-/*.book {
+    border-radius: 10px;
     display: flex;
-    background-color: green;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: pink;
+    box-shadow: 1px 4px 8px;
 }
-*/
-.book * {
-    background-color: yellow;
+
+.container div:hover {
+    box-shadow: 1px 4px 8px gainsboro;
+}
+dialog {
+    text-align: center;
+    position: fixed;
+    top: 20%;
+    left: 35%;
+    width: 400px;
+    height: 300px;
+    padding: 10px;
+
+}
+
+form input, select, button{
+    padding: 5px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+form input:hover, select:hover, button:hover {
+    background-color: goldenrod;
+}
+
+form button {
+    background-color: rgb(13, 13, 190);
+    color: whitesmoke;
+    width: 100px;
+
+}
+
+ .change-book-status {
+    background-color: rosybrown;
+    border-radius: 10px;
+    width: 70px;
+    text-align: center;
+    padding: 5px;
+}
+
+ button[data-id].delete {
+    border-radius: 10px;
+    width: 100px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: rgb(11, 124, 194);
+   /* background-color: rgb(13, 13, 190);*/
+    color: whitesmoke;
+    padding: 5px;
+ }
+
+ button[data-id].delete:hover, button:hover {
+    box-shadow: 1px 4px 10px;
+    background-color: goldenrod;
+    color: rgb(97, 9, 39);
+ }
+
+ button[data-id].delete:active, button:active {
+    
+    background-color: rgb(92, 65, 69);
+    color: whitesmoke;
+    
+ }
+.title {
+    /*font-family: "Norse Bold";*/
+    font-family: "Jember Sketch", 'Segoe UI', Tahoma, Verdana, sans-serif;
+    letter-spacing: 3px;
+}
+
+.author {
+    /*font-family: "Jember Sketch";*/
+    font-family: "Norse Bold", 'Segoe UI', Tahoma,Verdana, sans-serif;
+    letter-spacing: 2px;
+    color: black;
+}
+
+.pages {
+    color: rgb(97, 9, 39);
 }

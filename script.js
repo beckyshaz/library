@@ -46,20 +46,13 @@ addBookToLibrary(book3);
 addBookToLibrary(book4);
 addBookToLibrary(book5);
 
-
-console.log(myLibrary.length);
 const container = document.querySelector(".container");
 
-
-book4.changeBookStatus();
-console.log(book4);
-book5.changeBookStatus();
-console.log(book5);
 
 function displayBook () {
     container.innerHTML = "";
     for (let i = 0; i < myLibrary.length; i++) {
-        console.log(myLibrary[i]);
+       
         const div = document.createElement("div");
         div.innerHTML = `
         <p class="title"> ${myLibrary[i].title}</p>
@@ -69,20 +62,19 @@ function displayBook () {
         `
         div.classList = "book";
         const deleteButton = document.createElement("button");
-        deleteButton.innerHTML = "delete";
+        deleteButton.innerHTML = "Delete";
+        deleteButton.classList = "delete";
         deleteButton.setAttribute("data-id", myLibrary[i].id);
         deleteButton.addEventListener("click", () => {
             
             const deleteById  = deleteButton.dataset.id;
-            console.log(deleteById);
+            
             const index = myLibrary.findIndex((books) => books.id === deleteById);
 
-            console.log(index);
-            console.log(myLibrary[index]);
             if (index !== -1) {
                 myLibrary.splice(index, 1);
                 displayBook();
-                console.log(myLibrary);
+                
             }
 
         });
@@ -101,16 +93,9 @@ function displayBook () {
            const readStatusId = changeStatus.dataset.id;
            const bookIndex = myLibrary.findIndex((myBook) => myBook.id === readStatusId);
            const bookObject = myLibrary[bookIndex];
-           //changeStatus.textContent = bookObject.read;
            
-           console.log(bookObject.read);
            bookObject.changeBookStatus();
           
-
-           //changeStatus.textContent = myLibrary[i].read;
-           //const currentReadStatus = bookObject.read;
-           //changeStatus.textContent = currentReadStatus;
-           console.log(bookObject.read);
            displayBook();
         } )
         
@@ -126,7 +111,7 @@ function displayBook () {
 
 displayBook();
 
-const newBook = document.querySelector(".form-input-button");
+const newBook = document.querySelector(".add-new-book");
 const dialog = document.querySelector("dialog");
 const addBook = document.querySelector(".add-book");
 
@@ -145,10 +130,8 @@ addBook.addEventListener("click", (event) => {
     let book = new Book(bookAuthor.value, bookTitle.value, bookPages.value, readStatus.value);
 
     addBookToLibrary(book);
-    console.log(myLibrary);
     dialog.close();
     displayBook();
-    console.log(myLibrary.length);
     bookAuthor.value = "";
     bookPages.value = "";
     bookTitle.value = "";
