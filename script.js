@@ -100,15 +100,95 @@ class Book {
             const bookAuthor = document.querySelector(".author-input");
             const bookPages = document.querySelector(".pages-input");
             const readStatus = document.querySelector("#read");
+
+
+            [bookTitle, bookAuthor, bookPages].forEach((bookProperties) => {
+                bookProperties.addEventListener("input", () => {
+                    bookProperties.setCustomValidity("");
+                })
+            })
+           
+            let isValid = true;
+
+            let firstError = null;
+
+
+            if (bookTitle.validity.valueMissing) {
+               
+                
+                isValid = false;
+
+                if(!firstError){
+                    firstError = bookTitle;
+                }
             
-            let book = new Book(bookAuthor.value, bookTitle.value, bookPages.value, readStatus.value);
+                
+                bookTitle.style.borderColor = "red";
+                bookTitle.setCustomValidity("Please provide book tittle");
+                
+                    //firstError.reportValidity(); 
+                
+                
+            }
+
+           if (bookAuthor.validity.valueMissing) {
+               
+               // bookAuthor.style.borderColor = "red";
+                isValid = false;
+                bookAuthor.setCustomValidity("Please provide aurthor's name");
+                
+                bookAuthor.style.borderColor = "red";
+
+                if(!firstError){
+                    firstError = bookAuthor;
+                }
+                    
+                    //firstError.reportValidity();
             
-            Book.addBookToLibrary(book);
-            dialog.close();
-            Book.displayBook();
-            bookAuthor.value = "";
-            bookPages.value = "";
-            bookTitle.value = "";
+                
+                
+            }
+
+            
+            if (bookPages.validity.valueMissing) {
+                
+                
+                isValid = false;
+                bookPages.setCustomValidity("Please provide number of pages");
+
+                bookPages.style.borderColor = "red";
+
+                if(!firstError){
+                    firstError = bookPages;
+                }
+                    
+            
+                    //bookPages.style.borderColor = "red";
+                   
+                   // firstError.reportValidity();
+                
+                
+                
+            }
+            
+                
+            if (!isValid) {
+                firstError.reportValidity();
+                return;
+            }else {
+
+                
+                let book = new Book(bookAuthor.value, bookTitle.value, bookPages.value, readStatus.value);
+            
+                Book.addBookToLibrary(book);
+                dialog.close();
+                Book.displayBook();
+                bookAuthor.value = "";
+                bookPages.value = "";
+                bookTitle.value = "";
+                }
+
+            
         })
     }
 }

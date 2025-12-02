@@ -118,6 +118,7 @@ form button {
     width: 70px;
     text-align: center;
     padding: 5px;
+    cursor: pointer;
 }
 
  button[data-id].delete {
@@ -129,6 +130,7 @@ form button {
    /* background-color: rgb(13, 13, 190);*/
     color: whitesmoke;
     padding: 5px;
+    cursor: pointer;
  }
 
  button[data-id].delete:hover, button:hover {
