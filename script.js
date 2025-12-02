@@ -105,6 +105,7 @@ class Book {
             [bookTitle, bookAuthor, bookPages].forEach((bookProperties) => {
                 bookProperties.addEventListener("input", () => {
                     bookProperties.setCustomValidity("");
+                    bookProperties.style.borderColor = "none";
                 })
             })
            
